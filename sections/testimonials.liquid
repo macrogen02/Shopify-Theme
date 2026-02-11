@@ -1,0 +1,16 @@
+<section class="section">
+  <h2>{{ section.settings.title }}</h2>
+  <div class="testimonial-grid">
+    <blockquote>“Super fast delivery and authentic Apple products. Best tech store online.” <cite>— Sarah M.</cite></blockquote>
+    <blockquote>“Got my gaming setup at unbeatable prices. Smooth checkout and financing options!” <cite>— Daniel R.</cite></blockquote>
+    <blockquote>“Excellent support and warranty process. Highly recommended.” <cite>— Priya K.</cite></blockquote>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [{"type": "text", "id": "title", "label": "Title", "default": "What Tech Shoppers Say"}],
+  "presets": [{"name": "Testimonials"}]
+}
+{% endschema %}

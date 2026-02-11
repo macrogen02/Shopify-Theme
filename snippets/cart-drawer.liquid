@@ -1,0 +1,26 @@
+<aside class="cart-drawer" data-cart-drawer hidden>
+  <div class="drawer-header">
+    <h2>Your Cart</h2>
+    <button type="button" data-cart-close>✕</button>
+  </div>
+  <div class="drawer-body" data-cart-items>
+    {% if cart.item_count == 0 %}
+      <p>Your cart is empty.</p>
+    {% else %}
+      {% for item in cart.items %}
+        <div class="drawer-item">
+          <p>{{ item.product.title }}</p>
+          <p>{{ item.final_line_price | money }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <div class="drawer-upsell">
+    <h3>Complete your setup</h3>
+    {% assign upsell = collections['accessories'].products | default: collections.all.products %}
+    {% for product in upsell limit: 2 %}
+      {% render 'product-card', product: product %}
+    {% endfor %}
+  </div>
+  <a class="btn btn-primary" href="{{ routes.cart_url }}">Checkout</a>
+</aside>

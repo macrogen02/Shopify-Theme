@@ -1,0 +1,21 @@
+<section class="section">
+  <div class="section-header">
+    <h2>{{ section.settings.title }}</h2>
+  </div>
+  <div class="product-carousel" data-carousel>
+    {% assign collection = collections['best-sellers'] | default: collections.all %}
+    {% for product in collection.products limit: 8 %}
+      {% render 'product-card', product: product %}
+    {% else %}
+      <p>Add products to your Best Sellers collection to populate this carousel.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Best Sellers Carousel",
+  "settings": [{"type": "text", "id": "title", "label": "Title", "default": "Best Sellers"}],
+  "presets": [{"name": "Best Sellers Carousel"}]
+}
+{% endschema %}

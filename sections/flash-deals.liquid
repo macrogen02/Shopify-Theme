@@ -1,0 +1,17 @@
+<section class="section flash-deals" data-countdown data-end-time="{{ section.settings.end_time }}">
+  <h2>{{ section.settings.title }}</h2>
+  <p>Hurry up! Prices drop for a limited time only.</p>
+  <div class="countdown" data-countdown-display>00d : 00h : 00m : 00s</div>
+  <a href="/collections/deals" class="btn btn-primary">View Deals</a>
+</section>
+
+{% schema %}
+{
+  "name": "Flash Deals",
+  "settings": [
+    {"type": "text", "id": "title", "label": "Title", "default": "Flash Deals"},
+    {"type": "text", "id": "end_time", "label": "End Time (ISO)", "default": "2027-12-31T23:59:59Z"}
+  ],
+  "presets": [{"name": "Flash Deals"}]
+}
+{% endschema %}

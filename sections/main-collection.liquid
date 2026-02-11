@@ -1,0 +1,40 @@
+<section class="section">
+  <h1>{{ collection.title }}</h1>
+  {% if section.settings.show_filtering %}
+    <form class="filter-bar" data-filter-bar>
+      <select name="filter.v.option.brand">
+        <option value="">Brand</option>
+        {% for vendor in collection.all_vendors %}
+          <option value="{{ vendor | escape }}">{{ vendor }}</option>
+        {% endfor %}
+      </select>
+      <select name="filter.v.price.gte">
+        <option value="">Price</option>
+        <option value="100">$100+</option>
+        <option value="500">$500+</option>
+        <option value="1000">$1000+</option>
+      </select>
+      <select name="filter.v.availability">
+        <option value="">Availability</option>
+        <option value="1">In Stock</option>
+        <option value="0">Out of Stock</option>
+      </select>
+    </form>
+  {% endif %}
+
+  <div class="product-grid">
+    {% for product in collection.products %}
+      {% render 'product-card', product: product %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main Collection",
+  "settings": [
+    {"type": "checkbox", "id": "show_filtering", "label": "Enable filtering", "default": true},
+    {"type": "checkbox", "id": "show_sorting", "label": "Enable sorting", "default": true}
+  ]
+}
+{% endschema %}

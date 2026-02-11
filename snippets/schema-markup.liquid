@@ -1,0 +1,30 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  "url": {{ shop.url | json }},
+  "sameAs": ["https://www.facebook.com", "https://www.instagram.com"],
+  "logo": {{ settings.logo | image_url: width: 300 | prepend: 'https:' | json }}
+}
+</script>
+
+{% if template.name == 'product' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "description": {{ product.description | strip_html | json }},
+  "sku": {{ product.selected_or_first_available_variant.sku | json }},
+  "brand": {"@type": "Brand", "name": {{ product.vendor | json }}},
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "price": {{ product.price | divided_by: 100.0 | json }},
+    "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+    "url": {{ request.origin | append: product.url | json }}
+  }
+}
+</script>
+{% endif %}

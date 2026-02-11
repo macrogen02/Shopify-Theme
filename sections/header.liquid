@@ -1,0 +1,16 @@
+<header class="site-header">
+  <div class="header-top">
+    <a class="logo" href="{{ routes.root_url }}">{{ shop.name }}</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" data-theme-toggle>
+      <span>🌙</span>
+    </button>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="predictive-search-form" data-predictive-search-form>
+      <input type="search" name="q" placeholder="Search phones, laptops, gadgets" autocomplete="off" data-predictive-search-input>
+      <button type="submit">Search</button>
+      <div class="predictive-search-results" data-predictive-search-results hidden></div>
+    </form>
+    <button class="cart-trigger" data-cart-trigger>Cart (<span data-cart-count>{{ cart.item_count }}</span>)</button>
+  </div>
+
+  {% render 'mega-menu' %}
+</header>

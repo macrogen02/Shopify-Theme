@@ -1,0 +1,14 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "NeonTech",
+    "theme_version": "1.0.0",
+    "theme_author": "Codex"
+  },
+  {
+    "name": "Branding",
+    "settings": [
+      {"type": "image_picker", "id": "logo", "label": "Logo"}
+    ]
+  }
+]
