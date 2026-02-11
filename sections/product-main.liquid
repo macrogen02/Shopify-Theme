@@ -1,0 +1,40 @@
+<section class="section product-main" data-product-id="{{ product.id }}">
+  <div class="product-layout">
+    <div class="product-gallery">
+      {% for media in product.media %}
+        <div class="gallery-item">
+          {{ media | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'zoomable', alt: media.alt }}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="product-info">
+      <h1>{{ product.title }}</h1>
+      <p class="price">{{ product.price | money }}</p>
+      <p class="stock {% if product.selected_or_first_available_variant.available %}in{% else %}out{% endif %}-stock">
+        {% if product.selected_or_first_available_variant.inventory_quantity < 8 and product.selected_or_first_available_variant.available %}
+          Low Stock
+        {% elsif product.selected_or_first_available_variant.available %}
+          In Stock
+        {% else %}
+          Out of Stock
+        {% endif %}
+      </p>
+      {% form 'product', product, class: 'product-form' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button type="submit" class="btn btn-primary sticky-atc">Add to Cart</button>
+      {% endform %}
+      <div class="payment-options">Pay with EMI / Afterpay / ZipPay available at checkout.</div>
+      {% render 'trust-badges' %}
+      <div class="accordion">
+        <details open><summary>Tech Specs</summary><div>{{ product.description }}</div></details>
+        <details><summary>Warranty</summary><div>1-year manufacturer warranty on all eligible devices.</div></details>
+        <details><summary>Shipping</summary><div>Fast tracked shipping in 2-5 business days.</div></details>
+      </div>
+      {% render 'wishlist-compare', product: product %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Product Main", "presets": [{"name": "Product Main"}] }
+{% endschema %}

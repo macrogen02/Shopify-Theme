@@ -1,0 +1,19 @@
+<section class="section">
+  <h2>{{ section.settings.title }}</h2>
+  <div class="product-grid">
+    {% assign related = product.collections.first.products %}
+    {% for related_product in related limit: 4 %}
+      {% if related_product.id != product.id %}
+        {% render 'product-card', product: related_product %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Related Products",
+  "settings": [{"type": "text", "id": "title", "label": "Title", "default": "You May Also Like"}],
+  "presets": [{"name": "Related Products"}]
+}
+{% endschema %}

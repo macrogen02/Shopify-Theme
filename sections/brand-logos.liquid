@@ -1,0 +1,14 @@
+<section class="section">
+  <h2>{{ section.settings.title }}</h2>
+  <div class="brand-strip">
+    <span>Apple</span><span>Samsung</span><span>Sony</span><span>Dell</span><span>Asus</span><span>Logitech</span>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand Logos",
+  "settings": [{"type": "text", "id": "title", "label": "Title", "default": "Trusted Brands"}],
+  "presets": [{"name": "Brand Logos"}]
+}
+{% endschema %}

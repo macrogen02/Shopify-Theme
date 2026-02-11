@@ -1,0 +1,13 @@
+<article class="product-card" data-product-card>
+  <a href="{{ product.url }}">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: product.title }}
+    {% endif %}
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.price | money }}</p>
+  </a>
+  <div class="card-actions">
+    <button type="button" class="ghost-btn" data-quick-view-trigger data-handle="{{ product.handle }}">Quick View</button>
+    <button type="button" class="ghost-btn" data-add-wishlist data-product-id="{{ product.id }}">♡ Wishlist</button>
+  </div>
+</article>

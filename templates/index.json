@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "hero": {"type": "hero-tech", "settings": {"heading": "Up to 40% Off – Latest Tech Deals", "subheading": "Upgrade your setup with premium devices and accessories.", "button_label": "Shop Deals", "button_link": "/collections/all"}},
+    "categories": {"type": "featured-categories"},
+    "best_sellers": {"type": "best-sellers-carousel", "settings": {"title": "Best Sellers"}},
+    "flash_deals": {"type": "flash-deals", "settings": {"title": "Flash Deals", "end_time": "2027-12-31T23:59:59Z"}},
+    "testimonials": {"type": "testimonials", "settings": {"title": "What Tech Shoppers Say"}},
+    "brands": {"type": "brand-logos", "settings": {"title": "Trusted Brands"}}
+  },
+  "order": ["hero", "categories", "best_sellers", "flash_deals", "testimonials", "brands"]
+}
