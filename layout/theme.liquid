@@ -13,8 +13,8 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
     {{ content_for_header }}
-    {{ 'theme.css' | asset_url | stylesheet_tag: preload: true }}
-    {{ 'theme.js' | asset_url | script_tag: defer: true }}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
   </head>
   <body class="theme-body" data-theme="dark">
     <a class="skip-to-content-link" href="#MainContent">Skip to content</a>
